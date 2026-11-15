@@ -1,0 +1,37 @@
+# === Android / Gradle Build ===
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# === Gradle ===
+.gradletask/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Keystore & Secrets ===
+*.jks
+*.keystore
+!debug.keystore
+secrets.properties
+
+# === Logs & OS ===
+*.log
+Thumbs.db
+.DS_Store
+
+# === Room schemas (opsional tapi bagus disimpan)
+# !/schemas/
+
+# === IDE ===
+.vscode/

@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Material 3 Modern Blue/Green Theme -->
-    <color name="colorPrimary">#2C5F2D</color>       <!-- Dark Green-Main Accent -->
-    <color name="colorPrimaryVariant">#254926</color> <!-- Darker Green -->
-    <color name="colorOnPrimary">#FFFFFF</color>       <!-- White on Primary -->
-    <color name="colorSecondary">#1E88E5</color>      <!-- Blue Secondary -->
-    <color name="colorSecondaryVariant">#1565C0</color> <!-- Darker Blue -->
-    <color name="colorOnSecondary">#FFFFFF</color>     <!-- White on Secondary -->
-    <color name="colorBackground">#F5F7FA</color>    <!-- Light Gray-Blue Background -->
-    <color name="colorSurface">#FFFFFF</color>         <!-- White Surface -->
-    <color name="colorOnSurface">#212121</color>      <!-- On Surface -->
-    <color name="colorError">#B00020</color>          <!-- Error Red -->
-    <color name="colorOnError">#FFFFFF</color>         <!-- On Error -->
-
-    <!-- Extended Colors -->
-    <color name="colorPrimaryContainer">#E8F5E9</color> <!-- Light Green Container -->
-    <color name="colorSecondaryContainer">#E3F2FD</color> <!-- Light Blue Container -->
-    <color name="colorTertiary">#7B1FA2</color>          <!-- Tertiary Purple -->
-    <color name="colorTertiaryContainer">#F3E5F5</color> <!-- Tertiary Container -->
-
-    <!-- Surface Variants -->
-    <color name="colorSurfaceVariant">#EAEAEA</color>
-    <color name="colorOnSurfaceVariant">#757575</color>
-
-    <!-- Background Variants -->
-    <color name="colorBackgroundApp">#FFFFFF</color>
-    <color name="colorBackgroundScaffold">#F5F7FA</color>
-
-    <!-- Text Colors -->
-    <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorText Tertiary">#9E9E9E</color>
+    <color name="colorPrimary">#1E88E5</color>
+    <color name="colorSecondary">#2C5F2D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

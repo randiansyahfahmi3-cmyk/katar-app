@@ -3,57 +3,54 @@ package com.katar.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.navigateUp
-import com.katar.app.ui.theme.KatarTheme
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.katar.app.navigation.BottomNavigationBar
+import com.katar.app.ui.AgendaScreen
+import com.katar.app.ui.AnggotaScreen
+import com.katar.app.ui.BerandaScreen
+import com.katar.app.ui.CashScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            KatarTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val navController = rememberNavController()
-                    Scaffold(
-                        bottomBar = {
-                            BottomNavigationBar(navController = navController)
-                        }
-                    ) {
-                        NavHost(
-                            navController = navController,
-                            startDestination = "beranda",
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            // Beranda Destination
-                            composable("beranda") {
-                                BerandaScreen()
-                            }
-
-                            // Anggota Destination
-                            composable("anggota") {
-                                AnggotaScreen()
-                            }
-
-                            // Kas Destination
-                            composable("kas") {
-                                KasScreen()
-                            }
-
-                            // Agenda Destination
-                            composable("agenda") {
-                                AgendaScreen()
-                            }
-                        }
-                    }
+            MaterialTheme {
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    MainScreen()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    val items = listOf("Beranda", "Anggota", "Kas", "Agenda")
+
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(items = items, navController = navController)
+        }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = "Beranda",
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable("Beranda") { BerandaScreen() }
+            composable("Anggota") { AnggotaScreen() }
+            composable("Kas") { CashScreen() }
+            composable("Agenda") { AgendaScreen() }
         }
     }
 }

@@ -1,26 +1,4 @@
-<!-- Base application theme. -->
-<style name="Theme.Katar" parent="Theme.Material3.DayNight.NoActionBar">
-    <!-- Primary color - Modern Dark Green -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryContainer">@color/colorPrimaryContainer</item>
-    <item name="colorOnPrimary">@color/colorOnPrimary</item>
-
-    <!-- Secondary color - Blue -->
-    <item name="colorSecondary">@color/colorSecondary</item>
-    <item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
-    <item name="colorOnSecondary">@color/colorOnSecondary</item>
-
-    <!-- Surface -->
-    <item name="colorSurface">@color/colorSurface</item>
-    <item name="colorSurfaceVariant">@color/colorSurfaceVariant</item>
-    <item name="colorOnSurface">@color/colorOnSurface</item>
-    <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
-
-    <!-- Background -->
-    <item name="colorBackgroundScaffold">@color/colorBackgroundScaffold</item>
-    <item name="colorBackgroundApp">@color/colorBackgroundApp</item>
-
-    <!-- Status bar color -->
-    <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
-    <item name="android:navigationBarColor">@color/colorBackground</item>
-</style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Katar" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

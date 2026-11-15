@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -18,8 +19,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize"), "proguard-rules.pro")
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -29,19 +33,14 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-        kotlinCompiler = "org.jetbrains.kotlin:kotlin-compiler:1.9.22"
-    }
-
-    packagingOptions {
+    packaging {
         resources {
             excludes += "META-INF/{Aligent,SF,DSA,license,notice}"
+            excludes += "META-INF/kotlinx-atomicvalue.jar"
         }
-        excludes += "META-INF/kotlinx-atomicvalue.jar"
     }
 }
 
@@ -65,7 +64,6 @@ dependencies {
     // Room Database
     implementation("androidx.room:room-ktx:2.5.1")
     implementation("androidx.room:room-rxjava2:2.5.1")
-    kapt("androidx.room:room-compiler:2.5.1")
 
     // Retrofit & OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
