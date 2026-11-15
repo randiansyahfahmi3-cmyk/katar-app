@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KATAR</string>
+    <string name="navigation_home">Beranda</string>
+    <string name="navigation_anggota">Anggota</string>
+    <string name="navigation_kas">Kas</string>
+    <string name="navigation_agenda">Agenda</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_anggota">Manajemen Anggota</string>
+    <string name="title_kas">Kas & Laporan Keuangan</string>
+    <string name="title_agenda">Agenda Kegiatan</string>
