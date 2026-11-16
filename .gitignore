@@ -35,3 +35,14 @@ Thumbs.db
 
 # === IDE ===
 .vscode/
+
+# === Heap dumps & OOM artifacts ===
+*.hprof
+*.heap
+java_pid*.hprof
+
+# === File sampah Windows ===
+cls
+*.tmp
+*.bak
+*.backup

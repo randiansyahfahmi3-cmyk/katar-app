@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.katar.app.data.KatarViewModelFactory
 import com.katar.app.navigation.BottomNavigationBar
 import com.katar.app.ui.AgendaScreen
 import com.katar.app.ui.AnggotaScreen
@@ -22,10 +23,18 @@ import com.katar.app.ui.CashScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Ambil database dari Application class
+        val app = application as KatarApplication
+        val database = app.database
+
+        // Buat factory ViewModel
+        val viewModelFactory = KatarViewModelFactory(database)
+
         setContent {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    MainScreen()
+                    MainScreen(viewModelFactory = viewModelFactory)
                 }
             }
         }
@@ -33,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModelFactory: KatarViewModelFactory) {
     val navController = rememberNavController()
     val items = listOf("Beranda", "Anggota", "Kas", "Agenda")
 
