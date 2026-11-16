@@ -10,10 +10,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.katar.app.data.KatarViewModelFactory
+import com.katar.app.data.MemberViewModel
 import com.katar.app.navigation.BottomNavigationBar
 import com.katar.app.ui.AgendaScreen
 import com.katar.app.ui.AnggotaScreen
@@ -24,11 +26,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Ambil database dari Application class
         val app = application as KatarApplication
         val database = app.database
-
-        // Buat factory ViewModel
         val viewModelFactory = KatarViewModelFactory(database)
 
         setContent {
@@ -46,6 +45,8 @@ fun MainScreen(viewModelFactory: KatarViewModelFactory) {
     val navController = rememberNavController()
     val items = listOf("Beranda", "Anggota", "Kas", "Agenda")
 
+    val memberViewModel: MemberViewModel = viewModel(factory = viewModelFactory)
+
     Scaffold(
         bottomBar = {
             BottomNavigationBar(items = items, navController = navController)
@@ -57,7 +58,7 @@ fun MainScreen(viewModelFactory: KatarViewModelFactory) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("Beranda") { BerandaScreen() }
-            composable("Anggota") { AnggotaScreen() }
+            composable("Anggota") { AnggotaScreen(viewModel = memberViewModel) }
             composable("Kas") { CashScreen() }
             composable("Agenda") { AgendaScreen() }
         }
