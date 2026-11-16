@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.katar.app.data.CashViewModel
 import com.katar.app.data.KatarViewModelFactory
 import com.katar.app.data.MemberViewModel
 import com.katar.app.navigation.BottomNavigationBar
@@ -46,6 +47,7 @@ fun MainScreen(viewModelFactory: KatarViewModelFactory) {
     val items = listOf("Beranda", "Anggota", "Kas", "Agenda")
 
     val memberViewModel: MemberViewModel = viewModel(factory = viewModelFactory)
+    val cashViewModel: CashViewModel = viewModel(factory = viewModelFactory)
 
     Scaffold(
         bottomBar = {
@@ -59,7 +61,7 @@ fun MainScreen(viewModelFactory: KatarViewModelFactory) {
         ) {
             composable("Beranda") { BerandaScreen() }
             composable("Anggota") { AnggotaScreen(viewModel = memberViewModel) }
-            composable("Kas") { CashScreen() }
+            composable("Kas") { CashScreen(viewModel = cashViewModel) }
             composable("Agenda") { AgendaScreen() }
         }
     }
