@@ -5,31 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-/**
- * KatarDatabase - Room Database utama aplikasi KATAR.
- *
- * Catatan penting:
- * - Tidak butuh @TypeConverters karena semua field tanggal/enum
- *   sudah disimpan sebagai String.
- * - fallbackToDestructiveMigration() dipakai untuk tahap development
- *   (database dihapus & dibuat ulang jika schema berubah).
- *   JANGAN pakai ini di production!
- */
 @Database(
     entities = [
         MemberEntity::class,
         CashTransactionEntity::class,
-        EventEntity::class
+        EventEntity::class,
+        AttendanceEntity::class   // ← TAMBAHKAN INI
     ],
-    version = 1,
+    version = 2,                  // ← NAIKKAN VERSI (dari 1 ke 2)
     exportSchema = false
 )
 abstract class KatarDatabase : RoomDatabase() {
 
-    // === DAO Accessors ===
     abstract fun memberDao(): MemberDao
     abstract fun cashTransactionDao(): CashTransactionDao
     abstract fun eventDao(): EventDao
+    abstract fun attendanceDao(): AttendanceDao   // ← TAMBAHKAN INI
 
     companion object {
         private const val DATABASE_NAME = "katar.db"
@@ -37,10 +28,6 @@ abstract class KatarDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: KatarDatabase? = null
 
-        /**
-         * Mendapatkan instance database (singleton).
-         * Pattern double-checked locking agar thread-safe.
-         */
         fun getInstance(context: Context): KatarDatabase {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
@@ -53,7 +40,7 @@ abstract class KatarDatabase : RoomDatabase() {
                 KatarDatabase::class.java,
                 DATABASE_NAME
             )
-                .fallbackToDestructiveMigration()  // Untuk development
+                .fallbackToDestructiveMigration()
                 .build()
         }
     }

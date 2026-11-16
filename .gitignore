@@ -46,3 +46,9 @@ cls
 *.tmp
 *.bak
 *.backup
+
+# === Database backups (dari ADB download) ===
+*.db
+*.db-wal
+*.db-shm
+!**/databases/*.db
